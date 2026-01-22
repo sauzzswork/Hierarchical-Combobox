@@ -1,73 +1,82 @@
-# React + TypeScript + Vite
+# Hierarchical Combobox
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully accessible, scalable **hierarchical combobox** built entirely from scratch using  
+**React, TypeScript, Tailwind CSS, and Storybook**.
 
-Currently, two official plugins are available:
+This component supports async tree loading, manual virtualization, keyboard-first
+navigation, and multi-select with indeterminate states — without using any
+pre-built UI component libraries.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Async hierarchical tree loading
+- Manual list virtualization (no third-party virtualization libraries)
+- Search with ancestry visibility
+- Multi-select with indeterminate parent states
+- Keyboard-first navigation (Arrow keys, Enter, Space)
+- Screen-reader friendly (ARIA compliant)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧠 Architecture Highlights
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Normalized tree state (`nodes` + `rootIds`)
+- Pure tree flattening and virtualization layers
+- Roving focus model using `aria-activedescendant`
+- Selection state decoupled from tree state
+- Clear separation between logic and UI components
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ♿ Accessibility
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Fully keyboard operable
+- Follows WAI-ARIA Combobox and TreeView patterns
+- Stable focus during virtualization
+- Indeterminate checkbox states correctly exposed
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+ARIA roles and attributes were manually verified using browser DevTools, including:
+- `role="combobox"`
+- `role="tree"`
+- `role="treeitem"`
+- `aria-expanded`
+- `aria-activedescendant`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Accessibility was further validated using **Storybook v10 built-in a11y checks**.
+
+---
+
+## 📘 Storybook
+
+The component is documented and tested using Storybook.
+
+Included stories:
+- Default usage
+- Keyboard-only usage
+- Empty state
+- Loading state
+- Error state
+
+👉 **Storybook Preview:**  
+https://www.chromatic.com/library?appId=REPLACE_WITH_YOUR_LINK
+
+---
+
+## 🛠 Tech Stack
+
+- React
+- TypeScript
+- Tailwind CSS
+- Storybook (Vite)
+- Chromatic (for Storybook preview)
+
+---
+
+## 🚀 Running Locally
+
+```bash
+npm install
+npm run dev
+npm run storybook
