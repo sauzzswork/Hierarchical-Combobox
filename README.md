@@ -8,6 +8,12 @@ navigation, and multi-select with indeterminate states — without using any
 pre-built UI component libraries.
 
 ---
+## Project Structure
+
+- src/tree — tree state, async loading, flattening
+- src/virtualization — custom virtualization logic
+- src/selection — multi-select & indeterminate state logic
+
 
 ## ✨ Features
 
