@@ -60,7 +60,7 @@ Included stories:
 - Error state
 
 👉 **Storybook Preview:**  
-[https://www.chromatic.com/library?appId=69721ab09626056016d1b5d1&path=/story/components-hierarchicalcombobox--default]
+ https://69721ab09626056016d1b5d1-imcvopugdw.chromatic.com/?path=/story/components-hierarchicalcombobox--default 
 
 ---
 
